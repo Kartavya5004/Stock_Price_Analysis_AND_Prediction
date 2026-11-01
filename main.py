@@ -64,6 +64,7 @@ def main():
     llm.add_argument("--trend", default="bullish", choices=["bullish", "bearish", "neutral", "volatile"], help="Dummy data trend")
     llm.add_argument("--eval", action="store_true", help="Run backtest evaluation over dummy test set")
     sub.add_parser("serve")
+    pc = sub.add_parser("predict-change"); pc.add_argument("ticker", nargs="?", default=DEFAULT_TICKER)
     a = p.parse_args()
 
     if a.cmd == "build":
@@ -72,6 +73,12 @@ def main():
         from src.models.train import train
         train(allow_price_only=a.allow_price_only)
     elif a.cmd == "predict":
+        import json
+        from src.models.predict import predict_ticker
+        print(json.dumps(predict_ticker(a.ticker.upper()), indent=2))
+    elif a.cmd == "predict-change":
+        from src.models.predict_change import predict_price_change
+        print(json.dumps(predict_price_change(a.ticker.upper()), indent=2))
         import json
         from src.models.predict import predict_ticker
         print(json.dumps(predict_ticker(a.ticker.upper()), indent=2))

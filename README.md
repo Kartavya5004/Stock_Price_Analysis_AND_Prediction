@@ -4,7 +4,7 @@ Next-day direction prediction (bullish / neutral / bearish) from technical indic
 
 ## Setup
 ```bash
-python -m venv .venv && source .venv/bin/activate
+python -m venv .venv && .\venv\Scripts\Activate.ps1
 pip install -r requirements.txt
 cp .env.example .env   # add NEWS_API_KEY (optional)
 ```
