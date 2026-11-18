@@ -3,8 +3,9 @@ __pycache__/
 *.pyc
 .ipynb_checkpoints/
 .venv/
+venv/
 data/raw/*
 data/processed/*
-models/*.pkl
+# models/*.pkl
 !**/.gitkeep
 node_modules/
